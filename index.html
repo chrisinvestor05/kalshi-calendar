@@ -5,67 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kalshi Trading Calendar · Nov 2026</title>
 <style>
-  :root { --bg: #0a0a0a; --card: #111; --green: #00e676; --red: #ff5252; --white: #e0e0e0; --gray: #555; --border: #222; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--white); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; min-height: 100vh; }
-  .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 16px; }
-  h1 { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.5px; }
-  .pnl-box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; min-width: 180px; text-align: right; }
-  .pnl-label { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
-  .pnl-value { font-size: 1.8rem; font-weight: 700; margin-top: 4px; }
-  .pnl-value.positive { color: var(--green); }
-  .pnl-value.negative { color: var(--red); }
-  .filters { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
-  .filter-btn { background: var(--card); border: 1px solid var(--border); color: var(--white); padding: 8px 14px; border-radius: 8px; font-size: 0.8rem; cursor: pointer; }
-  .filter-btn.active { background: #1a1a1a; border-color: var(--green); color: var(--green); }
-  .schedule { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 20px; font-size: 0.9rem; line-height: 1.5; }
-  .schedule strong { color: var(--green); }
-  .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 24px; }
-  .dow { text-align: center; font-size: 0.75rem; color: var(--gray); padding: 8px 0; font-weight: 500; }
-  .day { aspect-ratio: 1; background: var(--card); border: 1px solid var(--border); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70px; padding: 4px; }
-  .day.win { background: #0a2e1a; border-color: var(--green); color: var(--green); }
-  .day.loss { background: #2e0a0a; border-color: var(--red); color: var(--red); }
-  .day.dimmed { opacity: 0.35; }
-  .day.today { box-shadow: 0 0 0 2px #fff; }
-  .day-dow { font-size: 0.6rem; opacity: 0.7; }
-  .day-num { font-size: 0.9rem; font-weight: 700; margin: 2px 0; }
-  .day-pnl { font-size: 0.6rem; }
-  .legend { display: flex; gap: 16px; font-size: 0.8rem; margin-bottom: 20px; }
-  .swatch { width: 12px; height: 12px; border-radius: 3px; display: inline-block; margin-right: 4px; }
-  .swatch.green { background: var(--green); }
-  .swatch.red { background: var(--red); }
-  .swatch.white { background: var(--white); }
-  .trades { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
-  .trade-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-  .trade-amt.positive { color: var(--green); font-weight: 600; }
-  .trade-amt.negative { color: var(--red); font-weight: 600; }
-  .note { font-size: 0.75rem; color: var(--gray); margin-top: 16px; text-align: center; }
+:root{--bg:#0a0a0a;--card:#111;--green:#00e676;--red:#ff5252;--white:#e0e0e0;--gray:#555;--border:#222}*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:20px;min-height:100vh}.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;gap:16px}h1{font-size:1.6rem;font-weight:600;letter-spacing:-.5px}.pnl-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;min-width:180px;text-align:right}.pnl-label{font-size:.75rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px}.pnl-value{font-size:1.8rem;font-weight:700;margin-top:4px}.pnl-value.positive{color:var(--green)}.pnl-value.negative{color:var(--red)}.filters{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}.filter-btn{background:var(--card);border:1px solid var(--border);color:var(--white);padding:8px 14px;border-radius:8px;font-size:.8rem;cursor:pointer}.filter-btn.active{background:#1a1a1a;border-color:var(--green);color:var(--green)}.schedule{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:20px;font-size:.9rem;line-height:1.5}.schedule strong{color:var(--green)}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:24px}.dow{text-align:center;font-size:.75rem;color:var(--gray);padding:8px 0;font-weight:500}.day{aspect-ratio:1;background:var(--card);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70px;padding:4px}.day.win{background:#0a2e1a;border-color:var(--green);color:var(--green)}.day.loss{background:#2e0a0a;border-color:var(--red);color:var(--red)}.day.dimmed{opacity:.35}.day.today{box-shadow:0 0 0 2px #fff}.day-dow{font-size:.6rem;opacity:.7}.day-num{font-size:.9rem;font-weight:700;margin:2px 0}.day-pnl{font-size:.6rem}.legend{display:flex;gap:16px;font-size:.8rem;margin-bottom:20px}.swatch{width:12px;height:12px;border-radius:3px;display:inline-block;margin-right:4px}.swatch.green{background:var(--green)}.swatch.red{background:var(--red)}.swatch.white{background:var(--white)}.trades{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}.trade-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.9rem}.trade-amt.positive{color:var(--green);font-weight:600}.trade-amt.negative{color:var(--red);font-weight:600}.note{font-size:.75rem;color:var(--gray);margin-top:16px;text-align:center}
 </style>
 </head>
 <body>
-  <div class="header">
-    <div><h1>Kalshi · BTC 15m</h1><div style="color:var(--gray);font-size:0.85rem;margin-top:4px;">November 2026</div></div>
-    <div class="pnl-box"><div class="pnl-label" id="pnlLabel">Month P&L</div><div class="pnl-value positive" id="monthPnl">+$835</div></div>
-  </div>
-  <div class="filters">
-    <button class="filter-btn active" data-filter="month">1 Month</button>
-    <button class="filter-btn" data-filter="3w">3 Weeks</button>
-    <button class="filter-btn" data-filter="2w">2 Weeks</button>
-    <button class="filter-btn" data-filter="week">This Week</button>
-    <button class="filter-btn" data-filter="today">Today</button>
-  </div>
-  <div class="schedule"><strong>Trading Window</strong> — 7:30pm ET<br>BTC 15m: Mon–Thu · Sports: Mon & Thu–Sun<br><span style="color:var(--gray)">No entry posted = no trade.</span></div>
-  <div class="legend"><span><span class="swatch green"></span>Win</span><span><span class="swatch red"></span>Loss</span><span><span class="swatch white"></span>No trade</span></div>
-  <div class="calendar" id="cal"></div>
-  <div class="trades"><h2>Trades</h2><div id="tradeList"></div></div>
-  <div class="note">Cash-flow based · stake often returns with winnings</div>
+<div class="header"><div><h1>Kalshi · BTC 15m</h1><div style="color:var(--gray);font-size:.85rem;margin-top:4px">November 2026 · Updated Nov 15</div></div><div class="pnl-box"><div class="pnl-label" id="pnlLabel">Month P&L</div><div class="pnl-value positive" id="monthPnl">+$0</div></div></div>
+<div class="filters"><button class="filter-btn active" data-filter="month">1 Month</button><button class="filter-btn" data-filter="3w">3 Weeks</button><button class="filter-btn" data-filter="2w">2 Weeks</button><button class="filter-btn" data-filter="week">This Week</button><button class="filter-btn" data-filter="today">Today</button></div>
+<div class="schedule"><strong>Trading Window</strong> — 7:30pm ET<br>BTC 15m: Mon–Thu · Sports: Mon & Thu–Sun<br><span style="color:var(--gray)">No entry posted = no trade. Numbers from Chase Kalshi wires.</span></div>
+<div class="legend"><span><span class="swatch green"></span>Win</span><span><span class="swatch red"></span>Loss</span><span><span class="swatch white"></span>No trade</span></div>
+<div class="calendar" id="cal"></div>
+<div class="trades"><h2>Trades</h2><div id="tradeList"></div></div>
+<div class="note">Cash-flow based from Chase · stake often returns with winnings · pending credits included</div>
 <script>
-const today=14; const dows=['Sun','Mon','Tue','Wed','Thu','Fri','Sat']; const startDow=0;
-const dayData={2:{type:'neutral'},6:{type:'win',pnl:906},9:{type:'win',pnl:207},10:{type:'win',pnl:605},12:{type:'loss',pnl:-500},13:{type:'win',pnl:827},14:{type:'neutral'}};
-const allTrades=[{date:'Nov 2',day:2,desc:'Deposit',amt:-1000},{date:'Nov 6',day:6,desc:'Credit',amt:906},{date:'Nov 9',day:9,desc:'5× credits',amt:2707},{date:'Nov 9',day:9,desc:'Withdrawals',amt:-2500},{date:'Nov 10',day:10,desc:'Credits',amt:1005},{date:'Nov 10',day:10,desc:'Withdrawal',amt:-500},{date:'Nov 12',day:12,desc:'Withdrawal',amt:-500},{date:'Nov 13',day:13,desc:'Credit',amt:827},{date:'Nov 14',day:14,desc:'Pending out',amt:-510}];
+const today=15;const dows=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];const startDow=0;
+const dayData={2:{type:'loss',pnl:-1000},6:{type:'win',pnl:906},9:{type:'win',pnl:207},10:{type:'win',pnl:505},12:{type:'loss',pnl:-500},13:{type:'win',pnl:318},14:{type:'win',pnl:904},15:{type:'win',pnl:777}};
+const allTrades=[{date:'Nov 2',day:2,desc:'Deposits',amt:-1000},{date:'Nov 6',day:6,desc:'Credit',amt:906},{date:'Nov 9',day:9,desc:'5× credits',amt:2707},{date:'Nov 9',day:9,desc:'Withdrawals',amt:-2500},{date:'Nov 10',day:10,desc:'Credits',amt:1005},{date:'Nov 10',day:10,desc:'Withdrawal',amt:-500},{date:'Nov 12',day:12,desc:'Withdrawal',amt:-500},{date:'Nov 13',day:13,desc:'Credit',amt:828},{date:'Nov 13',day:13,desc:'Withdrawals',amt:-510},{date:'Nov 14',day:14,desc:'Pending credit',amt:904},{date:'Nov 15',day:15,desc:'Pending credit',amt:777}];
 function getDayOfWeek(d){return dows[(startDow+d-1)%7];}
 function getRange(f){if(f==='today')return[today,today];if(f==='week')return[today-6,today];if(f==='2w')return[today-13,today];if(f==='3w')return[today-20,today];return[1,30];}
-function calcPnl(s,e){let p=0;for(let d=s;d<=e;d++)if(dayData[d]&&dayData[d].pnl!=null)p+=dayData[d].pnl;return p;}
+function calcPnl(s,e){let p=0;for(let d=Math.max(1,s);d<=Math.min(30,e);d++)if(dayData[d]&&dayData[d].pnl!=null)p+=dayData[d].pnl;return Math.round(p);}
 let currentFilter='month';
 function renderCal(){const cal=document.getElementById('cal');cal.innerHTML='';const[rs,re]=getRange(currentFilter);['S','M','T','W','T','F','S'].forEach(d=>{const el=document.createElement('div');el.className='dow';el.textContent=d;cal.appendChild(el)});for(let i=0;i<30;i++){const n=i+1;const el=document.createElement('div');el.className='day';const info=dayData[n];if(info)el.classList.add(info.type);else el.classList.add('neutral');if(n<rs||n>re)el.classList.add('dimmed');if(n===today)el.classList.add('today');const dow=getDayOfWeek(n).slice(0,3);el.innerHTML='<div class="day-dow">'+dow+'</div><div class="day-num">'+n+'</div>'+(info&&info.pnl!=null?'<div class="day-pnl">'+(info.pnl>0?'+':'')+info.pnl+'</div>':'');cal.appendChild(el);}}
 function renderTrades(){const list=document.getElementById('tradeList');list.innerHTML='';const[rs,re]=getRange(currentFilter);const filtered=allTrades.filter(t=>t.day>=rs&&t.day<=re);if(!filtered.length){list.innerHTML='<div style="color:var(--gray);padding:12px 0">No trades in this range</div>';return;}filtered.forEach(t=>{const row=document.createElement('div');row.className='trade-row';const cls=t.amt>=0?'positive':'negative';row.innerHTML='<div>'+t.date+'</div><div style="flex:1;margin:0 12px">'+t.desc+'</div><div class="trade-amt '+cls+'">'+(t.amt>=0?'+':'')+t.amt.toLocaleString()+'</div>';list.appendChild(row);});}
